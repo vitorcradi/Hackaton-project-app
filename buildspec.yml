@@ -7,7 +7,7 @@ phases:
       - PROJ_NAME="$PROJECT_NAME"
   pre_build:
     commands:
-      - login=$(aws ecr get-login)
+      - login=$(aws ecr get-login --region=us-east-1)
       - login=$(echo $login | sed 's/-e none/ /g' | tee)
       - echo $login | bash
       - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
